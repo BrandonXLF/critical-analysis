@@ -1,0 +1,191 @@
+Crit Rate: <input id="rate" value="5" type="number"> %
+<br>
+Crit DMG: <input id="damage" value="50" type="number"> %
+<br>
+
+<h3>Crit Value</h3>
+<math>
+	<mi>CRIT Value</mi>
+	<mo>=</mo>
+	<mn>2</mn>
+	<mo>&times;</mo>
+	<mi>CRIT Rate</mi>
+	<mo>+</mo>
+	<mi>CRIT DMG</mi>
+</math>
+<h3>Current Multiplier</h3>
+<math>
+	<mi>CRIT Mult</mi>
+	<mo>=</mo>
+	<mo>{</mo>
+	<mtable>
+		<mtr>
+			<mtd style="text-align: left;">1</mtd>
+			<mtd style="text-align: left;">
+				<mo>if</mo>
+				<mi>CRIT Rate</mi>
+				<mo>&leq;</mo>
+				<mn>0</mn>
+			</mtd>
+		</mtr>
+		<mtr>
+			<mtd style="text-align: left;">
+				<mn>1</mn>
+				<mo>+</mo>
+				<mi>CRIT Rate</mi>
+				<mo>&times;</mo>
+				<mi>CRIT DMG</mi>
+			</mtd>
+			<mtd style="text-align: left;">
+				<mo>if</mo>
+				<mn>0</mn>
+				<mo>&lt;</mo>
+				<mi>CRIT Rate</mi>
+				<mo>&lt;</mo>
+				<mn>1</mn>
+			</mtd>
+		</mtr>
+		<mtr>
+			<mtd style="text-align: left;">
+				<mn>1</mn>
+				<mo>+</mo>
+				<mi>CRIT DMG</mi>
+			</mtd>
+			<mtd style="text-align: left;">
+				<mo>if</mo>
+				<mi>CRIT Rate</mi>
+				<mo>&geq;</mo>
+				<mn>1</mn>
+			</mtd>
+		</mtr>
+	</mtable>
+</math>
+<h3>Optimal Multiplier</h3>
+<math>
+	<msub>
+		<mi>CRIT Mult</mi>
+		<mi>max</mi>
+	</msub>
+	<mo>=</mo>
+	<mo>{</mo>
+	<mtable>
+		<mtr>
+			<mtd style="text-align: left;">
+				1
+			</mtd>
+			<mtd style="text-align: left;">
+				<mo>if</mo>
+				<mi>CRIT Value</mi>
+				<mo>&leq;</mo>
+				<mn>0</mn>
+			</mtd>
+		</mtr>
+		<mtr>
+			<mtd style="text-align: left;">
+				<mn>1</mn>
+				<mo>+</mo>
+				<msup>
+					<mrow>
+						<mfrac>
+							<mn>1</mn>
+							<mn>8</mn>
+						</mfrac>
+						<mo>&InvisibleTimes;</mo>
+						<mo>(</mo>
+						<mi>CRIT Value</mi>
+						<mo>)</mo>
+					</mrow>
+					<mn>2</mn>
+				</msup>
+			</mtd>
+			<mtd style="text-align: left;">
+				<mo>if</mo>
+				<mn>0</mn>
+				<mo>&lt;</mo>
+				<mi>CRIT Value</mi>
+				<mo>&lt;</mo>
+				<mn>4</mn>
+			</mtd>
+		</mtr>
+		<mtr>
+			<mtd style="text-align: left;">
+				<mi>CRIT Value</mi>
+				<mo>-</mo>
+				<mn>1</mn>
+			</mtd>
+			<mtd style="text-align: left;">
+				<mo>if</mo>
+				<mi>CRIT Value</mi>
+				<mo>&geq;</mo>
+				<mn>4</mn>
+			</mtd>
+		</mtr>
+	</mtable>
+</math>
+<h3>Efficiency</h3>
+<math>
+	<mi>CRIT Efficiency</mi>
+	<mo>=</mo>
+	<mfrac>
+		<mrow>
+			<mi>CRIT Mult</mi>
+		</mrow>
+		<mrow>
+			<msub>
+				<mi>CRIT Mult</mi>
+				<mi>max</mi>
+			</msub>
+		</mrow>
+	</mfrac>
+</math>
+
+<script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+
+<div id="calculator" style="width: 400px; height: 400px;"></div>
+
+<script>
+	const critRateInput = document.querySelector('#rate');
+	const critDmgInput = document.querySelector('#damage');
+	const valueOutput = document.querySelector('#value');
+	const multiplierOutput = document.querySelector('#multiplier');
+	const maxOutput = document.querySelector('#max');
+	const efficiencyOutput = document.querySelector('#efficiency');
+
+	var elt = document.getElementById('calculator');
+	var calculator = Desmos.GraphingCalculator(elt, {
+		expressions: false,
+		lockViewport: true,
+		xAxisLabel: 'Crit Rate (%)',
+		yAxisLabel: 'Crit Multiplier (%)',
+		settingsMenu: false
+	});
+
+	function process() {
+		const critRate = critRateInput.value / 100;
+		const critDmg = critDmgInput.value / 100;
+		const critValue = 2 * critRate + critDmg;
+		const critMax = critValue <= 0 ? 1 : (critValue >= 4 ? critValue - 1 : 1 + (1/8) * critValue * critValue);
+
+		calculator.removeExpressions(calculator.getExpressions());
+
+		calculator.setExpression({
+			latex: String.raw`y=\left(1+\max\left(0,\min\left(\frac{x}{100},1\right)\right)\max\left(${critValue}-\frac{x}{50},0\right)\right)\cdot100`
+		})
+
+		calculator.setExpression({
+			latex: String.raw`x=${critRate * 100}`
+		})
+
+		calculator.setMathBounds({
+			left: Math.min(critValue * 50 * -0.1, critRate * 100 * 1.1),
+			right: Math.max(critValue * 50 * 1.1, critRate * 100 * -0.1),
+			top: critMax * 110,
+			bottom: critMax * -10
+		})
+	}
+
+	critRateInput.addEventListener('input', process);
+	critDmgInput.addEventListener('input', process);
+
+	process();
+</script>
