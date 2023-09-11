@@ -1,3 +1,8 @@
+<style>
+	math * {
+		text-align: left;
+	}
+</style>
 <h3>Crit Value</h3>
 <math>
 	<mi>CRIT Value</mi>
@@ -15,8 +20,8 @@
 	<mo>{</mo>
 	<mtable>
 		<mtr>
-			<mtd style="text-align: left;">1</mtd>
-			<mtd style="text-align: left;">
+			<mtd>1</mtd>
+			<mtd>
 				<mo>if</mo>
 				<mi>CRIT Rate</mi>
 				<mo>&leq;</mo>
@@ -24,14 +29,14 @@
 			</mtd>
 		</mtr>
 		<mtr>
-			<mtd style="text-align: left;">
+			<mtd>
 				<mn>1</mn>
 				<mo>+</mo>
 				<mi>CRIT Rate</mi>
 				<mo>&times;</mo>
 				<mi>CRIT DMG</mi>
 			</mtd>
-			<mtd style="text-align: left;">
+			<mtd>
 				<mo>if</mo>
 				<mn>0</mn>
 				<mo>&lt;</mo>
@@ -41,12 +46,12 @@
 			</mtd>
 		</mtr>
 		<mtr>
-			<mtd style="text-align: left;">
+			<mtd>
 				<mn>1</mn>
 				<mo>+</mo>
 				<mi>CRIT DMG</mi>
 			</mtd>
-			<mtd style="text-align: left;">
+			<mtd>
 				<mo>if</mo>
 				<mi>CRIT Rate</mi>
 				<mo>&geq;</mo>
@@ -55,69 +60,7 @@
 		</mtr>
 	</mtable>
 </math>
-<h3>Optimal Multiplier</h3>
-<math>
-	<msub>
-		<mi>CRIT Mult</mi>
-		<mi>max</mi>
-	</msub>
-	<mo>=</mo>
-	<mo>{</mo>
-	<mtable>
-		<mtr>
-			<mtd style="text-align: left;">
-				1
-			</mtd>
-			<mtd style="text-align: left;">
-				<mo>if</mo>
-				<mi>CRIT Value</mi>
-				<mo>&leq;</mo>
-				<mn>0</mn>
-			</mtd>
-		</mtr>
-		<mtr>
-			<mtd style="text-align: left;">
-				<mn>1</mn>
-				<mo>+</mo>
-				<msup>
-					<mrow>
-						<mfrac>
-							<mn>1</mn>
-							<mn>8</mn>
-						</mfrac>
-						<mo>&InvisibleTimes;</mo>
-						<mo>(</mo>
-						<mi>CRIT Value</mi>
-						<mo>)</mo>
-					</mrow>
-					<mn>2</mn>
-				</msup>
-			</mtd>
-			<mtd style="text-align: left;">
-				<mo>if</mo>
-				<mn>0</mn>
-				<mo>&lt;</mo>
-				<mi>CRIT Value</mi>
-				<mo>&lt;</mo>
-				<mn>4</mn>
-			</mtd>
-		</mtr>
-		<mtr>
-			<mtd style="text-align: left;">
-				<mi>CRIT Value</mi>
-				<mo>-</mo>
-				<mn>1</mn>
-			</mtd>
-			<mtd style="text-align: left;">
-				<mo>if</mo>
-				<mi>CRIT Value</mi>
-				<mo>&geq;</mo>
-				<mn>4</mn>
-			</mtd>
-		</mtr>
-	</mtable>
-</math>
-<h3>Efficiency</h3>
+<h3>Current Efficiency</h3>
 <math>
 	<mi>CRIT Efficiency</mi>
 	<mo>=</mo>
@@ -133,3 +76,198 @@
 		</mrow>
 	</mfrac>
 </math>
+<h3>Optimal CRIT Rate</h3>
+	<math>
+		<msub>
+			<mi>CRIT Rate</mi>
+			<mi>opt</mi>
+		</msub>
+		<mo>=</mo>
+		<mo>{</mo>
+		<mtable>
+			<mtr>
+				<mtd>
+					<mfrac>
+						<mn>1</mn>
+						<mn>2</mn>
+					</mfrac>
+					<mo>&times;</mo>
+					<mi>CRIT Value</mi>
+				</mtd>
+				<mtd>
+					<mo>if</mo>
+					<mi>CRIT Value</mi>
+					<mo>&leq;</mo>
+					<mn>0</mn>
+				</mtd>
+			</mtr>
+			<mtr>
+				<mtd>
+					<mfrac>
+						<mn>1</mn>
+						<mn>4</mn>
+					</mfrac>
+					<mo>&times;</mo>
+					<mi>CRIT Value</mi>
+				</mtd>
+				<mtd>
+					<mo>if</mo>
+					<mn>0</mn>
+					<mo>&lt;</mo>
+					<mi>CRIT Value</mi>
+					<mo>&lt;</mo>
+					<mn>4</mn>
+				</mtd>
+			</mtr>
+			<mtr>
+				<mtd>
+					<mn>1</mn>
+				</mtd>
+				<mtd>
+					<mo>if</mo>
+					<mi>CRIT Value</mi>
+					<mo>&geq;</mo>
+					<mn>4</mn>
+				</mtd>
+			</mtr>
+		</mtable>
+	</math>
+	<h3>Optimal CRIT DMG</h3>
+	<math>
+		<msub>
+			<mi>CRIT DMG</mi>
+			<mi>opt</mi>
+		</msub>
+		<mo>=</mo>
+		<mo>{</mo>
+		<mtable>
+			<mtr>
+				<mtd>
+					0
+				</mtd>
+				<mtd>
+					<mo>if</mo>
+					<mi>CRIT Value</mi>
+					<mo>&leq;</mo>
+					<mn>0</mn>
+				</mtd>
+			</mtr>
+			<mtr>
+				<mtd>
+					<mfrac>
+						<mn>1</mn>
+						<mn>2</mn>
+					</mfrac>
+					<mo>&times;</mo>
+					<mi>CRIT Value</mi>
+				</mtd>
+				<mtd>
+					<mo>if</mo>
+					<mn>0</mn>
+					<mo>&lt;</mo>
+					<mi>CRIT Value</mi>
+					<mo>&lt;</mo>
+					<mn>4</mn>
+				</mtd>
+			</mtr>
+			<mtr>
+				<mtd>
+					<mi>CRIT Value</mi>
+					<mo>-</mo>
+					<mn>2</mn>
+				</mtd>
+				<mtd>
+					<mo>if</mo>
+					<mi>CRIT Value</mi>
+					<mo>&geq;</mo>
+					<mn>4</mn>
+				</mtd>
+			</mtr>
+		</mtable>
+	</math>
+	<h3>Optimal Multiplier</h3>
+	<math>
+		<mtable>
+			<mtr>
+				<mtd>
+					<msub>
+						<mi>CRIT Mult</mi>
+						<mi>max</mi>
+					</msub>
+				</mtd>
+				<mtd>
+					<mo>=</mo>
+					<mn>1</mn>
+					<mo>+</mo>
+					<msub>
+						<mi>CRIT Rate</mi>
+						<mi>opt</mi>
+					</msub>
+					<mo>&times;</mo>
+					<msub>
+						<mi>CRIT DMG</mi>
+						<mi>opt</mi>
+					</msub>
+				</mtd>
+			</mtr>
+			<mtr>
+				<mtd></mtd>
+				<mtd>
+					<mo>=</mo>
+					<mo>{</mo>
+					<mtable>
+						<mtr>
+							<mtd>
+								1
+							</mtd>
+							<mtd>
+								<mo>if</mo>
+								<mi>CRIT Value</mi>
+								<mo>&leq;</mo>
+								<mn>0</mn>
+							</mtd>
+						</mtr>
+						<mtr>
+							<mtd>
+								<mn>1</mn>
+								<mo>+</mo>
+								<msup>
+									<mrow>
+										<mfrac>
+											<mn>1</mn>
+											<mn>8</mn>
+										</mfrac>
+										<mo>&InvisibleTimes;</mo>
+										<mo>(</mo>
+										<mi>CRIT Value</mi>
+										<mo>)</mo>
+									</mrow>
+									<mn>2</mn>
+								</msup>
+							</mtd>
+							<mtd>
+								<mo>if</mo>
+								<mn>0</mn>
+								<mo>&lt;</mo>
+								<mi>CRIT Value</mi>
+								<mo>&lt;</mo>
+								<mn>4</mn>
+							</mtd>
+						</mtr>
+						<mtr>
+							<mtd>
+								<mi>CRIT Value</mi>
+								<mo>-</mo>
+								<mn>1</mn>
+							</mtd>
+							<mtd>
+								<mo>if</mo>
+								<mi>CRIT Value</mi>
+								<mo>&geq;</mo>
+								<mn>4</mn>
+							</mtd>
+						</mtr>
+					</mtable>
+				</mtd>
+			</mtr>
+	</math>
