@@ -1,0 +1,38 @@
+article {
+    display: flex;
+    gap: 2em;
+    text-align: center;
+}
+
+.cells {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.row {
+    text-align: left;
+    flex: 1;
+    display: flex;
+    gap: 1em;
+    justify-content: space-around;
+}
+
+.crit-row {
+    font-size: 115%;
+}
+
+.desmos-caption {
+    margin-bottom: 0.5em;
+}
+
+.desmos {
+    aspect-ratio: 1 / 1;
+    width: 20em;
+}
+
+@media (max-width: 850px) {
+    article {
+        flex-direction: column;
+    }
+}

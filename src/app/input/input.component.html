@@ -1,0 +1,6 @@
+<label>
+    <div>{{name}}</div>
+    <div>
+        <input type="number" [value]="(value! * 100)" (input)="updateValue($event)">%
+    </div>
+</label>

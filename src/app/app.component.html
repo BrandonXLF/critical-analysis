@@ -1,0 +1,144 @@
+<main>
+	<header>
+		<h1>Critical Analysis</h1>
+		<h2>Genshin Crit Rate and Damage Efficiency Analyzer</h2>
+	</header>
+    <app-calculator [critInfo]="critInfo" />
+	<div>
+		<h3>Crit Value</h3>
+		<math>
+			<mi>CRIT Value</mi>
+			<mo>=</mo>
+			<mn>2</mn>
+			<mo>&times;</mo>
+			<mi>CRIT Rate</mi>
+			<mo>+</mo>
+			<mi>CRIT DMG</mi>
+		</math>
+		<h3>Current Multiplier</h3>
+		<math>
+			<mi>CRIT Mult</mi>
+			<mo>=</mo>
+			<mo>{</mo>
+			<mtable>
+				<mtr>
+					<mtd style="text-align: left;">1</mtd>
+					<mtd style="text-align: left;">
+						<mo>if</mo>
+						<mi>CRIT Rate</mi>
+						<mo>&leq;</mo>
+						<mn>0</mn>
+					</mtd>
+				</mtr>
+				<mtr>
+					<mtd style="text-align: left;">
+						<mn>1</mn>
+						<mo>+</mo>
+						<mi>CRIT Rate</mi>
+						<mo>&times;</mo>
+						<mi>CRIT DMG</mi>
+					</mtd>
+					<mtd style="text-align: left;">
+						<mo>if</mo>
+						<mn>0</mn>
+						<mo>&lt;</mo>
+						<mi>CRIT Rate</mi>
+						<mo>&lt;</mo>
+						<mn>100</mn>
+					</mtd>
+				</mtr>
+				<mtr>
+					<mtd style="text-align: left;">
+						<mn>1</mn>
+						<mo>+</mo>
+						<mi>CRIT DMG</mi>
+					</mtd>
+					<mtd style="text-align: left;">
+						<mo>if</mo>
+						<mi>CRIT Rate</mi>
+						<mo>&geq;</mo>
+						<mn>100</mn>
+					</mtd>
+				</mtr>
+			</mtable>
+		</math>
+		<h3>Optimal Multiplier</h3>
+		<math>
+			<msub>
+				<mi>CRIT Mult</mi>
+				<mi>max</mi>
+			</msub>
+			<mo>=</mo>
+			<mo>{</mo>
+			<mtable>
+				<mtr>
+					<mtd style="text-align: left;">
+						1
+					</mtd>
+					<mtd style="text-align: left;">
+						<mo>if</mo>
+						<mi>CRIT Value</mi>
+						<mo>&leq;</mo>
+						<mn>0</mn>
+					</mtd>
+				</mtr>
+				<mtr>
+					<mtd style="text-align: left;">
+						<mn>1</mn>
+						<mo>+</mo>
+						<msup>
+							<mrow>
+								<mfrac>
+									<mn>1</mn>
+									<mn>8</mn>
+								</mfrac>
+								<mo>&InvisibleTimes;</mo>
+								<mo>(</mo>
+								<mi>CRIT Value</mi>
+								<mo>)</mo>
+							</mrow>
+							<mn>2</mn>
+						</msup>
+					</mtd>
+					<mtd style="text-align: left;">
+						<mo>if</mo>
+						<mn>0</mn>
+						<mo>&lt;</mo>
+						<mi>CRIT Value</mi>
+						<mo>&lt;</mo>
+						<mn>4</mn>
+					</mtd>
+				</mtr>
+				<mtr>
+					<mtd style="text-align: left;">
+						<mi>CRIT Value</mi>
+						<mo>-</mo>
+						<mn>1</mn>
+					</mtd>
+					<mtd style="text-align: left;">
+						<mo>if</mo>
+						<mi>CRIT Value</mi>
+						<mo>&geq;</mo>
+						<mn>4</mn>
+					</mtd>
+				</mtr>
+			</mtable>
+		</math>
+		<h3>Efficiency</h3>
+		<math>
+			<mi>CRIT Efficiency</mi>
+			<mo>=</mo>
+			<mfrac>
+				<mrow>
+					<mi>CRIT Mult</mi>
+				</mrow>
+				<mrow>
+					<msub>
+						<mi>CRIT Mult</mi>
+						<mi>max</mi>
+					</msub>
+				</mrow>
+			</mfrac>
+		</math>
+	</div>
+</main>

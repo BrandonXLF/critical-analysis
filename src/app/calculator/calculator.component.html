@@ -1,0 +1,34 @@
+<article>
+    <div class="cells">
+        <app-cell title="Current" lineColor="#c74440">
+            <div class="row crit-row">
+                <app-input name="Crit Rate" [value]="critInfo.rate" (valueChange)="critInfo.rate = $event" />
+                <app-input name="Crit DMG" [value]="critInfo.dmg" (valueChange)="critInfo.dmg = $event" />
+            </div>
+            <div class="row">
+                <app-output name="Crit Value" [value]="critInfo.value!" />
+                <app-output name="Multiplier" [value]="critInfo.multiplier!" />
+                <app-ratio name="Ratio" [value]="critInfo.ratio" />
+                <app-output name="Efficiency" [value]="critInfo.efficiency!" />
+            </div>
+        </app-cell>
+        <app-cell title="Optimal" lineColor="#fa7e19">
+            <div class="row crit-row">
+                <app-output name="Crit Rate" [value]="critInfo.bestRate!" />
+                <app-output name="Crit DMG" [value]="critInfo.bestDmg!" />
+            </div>
+            <div class="row">
+                <app-output name="Crit Value" [value]="critInfo.value!" />
+                <app-output name="Multiplier" [value]="critInfo.bestMultiplier!" />
+                <app-ratio name="Ratio" [value]="critInfo.bestRatio" />
+                <app-output name="Efficiency" [value]="1" />
+            </div>
+        </app-cell>
+    </div>
+    <div>
+        <div class="desmos-caption">
+            Crit Multipliers when Crit Value is {{critInfo.value! * 100 | number:'1.0-2'}}%
+        </div>
+        <div #desmos class="desmos"></div>
+    </div>
+</article>
