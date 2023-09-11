@@ -54,8 +54,8 @@ export class CalculatorComponent implements AfterViewInit {
     this.graph = Desmos.GraphingCalculator(this.desmosElement!.nativeElement, {
       expressions: false,
       lockViewport: true,
-      xAxisLabel: 'Crit Rate (%)',
-      yAxisLabel: 'Crit Multiplier (%)',
+      xAxisLabel: 'CRIT Rate (%)',
+      yAxisLabel: 'CRIT Multiplier (%)',
       settingsMenu: false
     });
 
