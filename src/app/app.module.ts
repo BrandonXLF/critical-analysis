@@ -7,6 +7,7 @@ import { OutputComponent } from './output/output.component';
 import { InputComponent } from './input/input.component';
 import { RatioComponent } from './ratio/ratio.component';
 import { CellComponent } from './cell/cell.component';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CellComponent } from './cell/cell.component';
     OutputComponent,
     InputComponent,
     RatioComponent,
-    CellComponent
+    CellComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule

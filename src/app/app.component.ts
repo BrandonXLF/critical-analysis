@@ -1,3 +1,5 @@
+import calcs from './calcs.html';
+
 import { Component } from '@angular/core';
 import { CritInfo } from './crit-info';
 
@@ -7,5 +9,6 @@ import { CritInfo } from './crit-info';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  critInfo = new CritInfo(0.05, 0.5)
+	calcs = calcs;
+  	critInfo = new CritInfo(0.05, 0.5)
 }
