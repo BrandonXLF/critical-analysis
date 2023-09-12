@@ -56,3 +56,8 @@ body {
 	color: #fff;
 	font-family: sans-serif;
 }
+
+mat-card-content,
+.mat-expansion-panel-content {
+	overflow-x: auto;
+}

@@ -1,9 +1,12 @@
+header {
+	text-align: center;
+}
+
 main {
 	display: flex;
-	align-items: stretch;
 	flex-direction: column;
 	max-width: max-content;
+	min-width: min(350px, 100%);
 	margin: auto;
 	gap: 1em;
-	text-align: center;
 }
