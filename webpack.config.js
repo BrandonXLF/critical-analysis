@@ -3,7 +3,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.html$/i,
-				use: 'raw-loader',
+				use: 'raw-loader'
 			}
 		]
 	}

@@ -15,11 +15,11 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-			"builder": "@angular-builders/custom-webpack:browser",
+					"builder": "@angular-builders/custom-webpack:browser",
 					"options": {
-			"customWebpackConfig": {
-				"path": "./webpack.config.js"
-			},
+						"customWebpackConfig": {
+							"path": "./webpack.config.js"
+						},
 						"outputPath": "dist/critical-analysis",
 						"index": "src/index.html",
 						"main": "src/main.ts",
@@ -64,7 +64,7 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-			"builder": "@angular-builders/custom-webpack:dev-server",
+					"builder": "@angular-builders/custom-webpack:dev-server",
 					"configurations": {
 						"production": {
 							"browserTarget": "critical-analysis:build:production"
