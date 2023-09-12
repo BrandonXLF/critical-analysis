@@ -9,7 +9,7 @@
 				<app-input name="CRIT DMG" [value]="critInfo.dmg" [min]="0" (valueChange)="critInfo.dmg = $event" />
 			</p>
 			<p class="row">
-				<app-output name="Crit Value" [value]="critInfo.value!" />
+				<app-output name="CRIT Value" [value]="critInfo.value!" />
 				<app-output name="Multiplier" [value]="critInfo.multiplier!" />
 				<app-ratio name="Ratio" [value]="critInfo.ratio" />
 				<app-output name="Efficiency" [value]="critInfo.efficiency!" />
@@ -26,7 +26,7 @@
 				<app-output name="CRIT DMG" [value]="critInfo.bestDmg!" />
 			</p>
 			<p class="row">
-				<app-output name="Crit Value" [value]="critInfo.value!" />
+				<app-output name="CRIT Value" [value]="critInfo.value!" />
 				<app-output name="Multiplier" [value]="critInfo.bestMultiplier!" />
 				<app-ratio name="Ratio" [value]="critInfo.bestRatio" />
 				<app-output name="Efficiency" [value]="1" />
@@ -35,7 +35,7 @@
 	</mat-card>
 	<mat-card>
 		<mat-card-header>
-			CRIT Multipliers when Crit Value is {{critInfo.value! * 100 | number:'1.0-2'}}%
+			CRIT Multipliers when CRIT Value is {{critInfo.value! * 100 | number:'1.0-2'}}%
 		</mat-card-header>
 		<mat-card-content>
 			<div #desmos class="desmos"></div>
