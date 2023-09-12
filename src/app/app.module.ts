@@ -14,23 +14,23 @@ import { MatCardModule } from '@angular/material/card';
 import { CalculationsComponent } from './calculations/calculations.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CalculatorComponent,
-    OutputComponent,
-    InputComponent,
-    RatioComponent,
-    SafeHtmlPipe,
-    CalculationsComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-	MatExpansionModule,
-	MatCardModule,
-	MatInputModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		CalculatorComponent,
+		OutputComponent,
+		InputComponent,
+		RatioComponent,
+		SafeHtmlPipe,
+		CalculationsComponent
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		MatExpansionModule,
+		MatCardModule,
+		MatInputModule
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
