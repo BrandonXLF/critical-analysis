@@ -2,7 +2,7 @@
 	<div class="label-text">{{name}}</div>
 	<div>
 		<mat-form-field>
-			<input matInput type="number" [value]="(value! * 100)" (input)="updateValue($event)">
+			<input matInput type="number" step="any" [value]="displayValue" [min]="min" (input)="updateValue($event)">
 			<span matTextSuffix>%</span>
 		</mat-form-field>
 	</div>

@@ -6,7 +6,7 @@
 		<mat-card-content>
 			<p class="row crit-row">
 				<app-input name="CRIT Rate" [value]="critInfo.rate" (valueChange)="critInfo.rate = $event" />
-				<app-input name="CRIT DMG" [value]="critInfo.dmg" (valueChange)="critInfo.dmg = $event" />
+				<app-input name="CRIT DMG" [value]="critInfo.dmg" [min]="0" (valueChange)="critInfo.dmg = $event" />
 			</p>
 			<p class="row">
 				<app-output name="Crit Value" [value]="critInfo.value!" />
