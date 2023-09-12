@@ -9,6 +9,8 @@ declare const Desmos: any;
 	styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements AfterViewInit {
+	static EPSILON = 0.00001;
+
 	@Input() critInfo!: CritInfo;
 	@Input() compare?: CritInfo | false;
 	@Input() closable?: boolean;
@@ -18,7 +20,7 @@ export class CalculatorComponent implements AfterViewInit {
 	graph: any;
 
 	updateGraph() {
-		const isOptimal = this.critInfo.multiplier === this.critInfo.bestMultiplier;
+		const isOptimal = Math.abs(this.critInfo.multiplier - this.critInfo.bestMultiplier) < CalculatorComponent.EPSILON;
 
 		this.graph.removeExpressions(this.graph.getExpressions());
 
