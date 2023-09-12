@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-output',
   templateUrl: './output.component.html',
-  styleUrls: ['./output.component.less']
+  styleUrls: ['./output.component.scss']
 })
 export class OutputComponent {
   @Input() name?: string;

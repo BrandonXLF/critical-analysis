@@ -6,8 +6,12 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import { OutputComponent } from './output/output.component';
 import { InputComponent } from './input/input.component';
 import { RatioComponent } from './ratio/ratio.component';
-import { CellComponent } from './cell/cell.component';
 import { SafeHtmlPipe } from './safe-html.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { CalculationsComponent } from './calculations/calculations.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +20,15 @@ import { SafeHtmlPipe } from './safe-html.pipe';
     OutputComponent,
     InputComponent,
     RatioComponent,
-    CellComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    CalculationsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+	MatExpansionModule,
+	MatCardModule,
+	MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

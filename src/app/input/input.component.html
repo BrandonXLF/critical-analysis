@@ -1,6 +1,9 @@
 <label>
-    <div>{{name}}</div>
+    <div class="label-text">{{name}}</div>
     <div>
-        <input type="number" [value]="(value! * 100)" (input)="updateValue($event)">%
+		<mat-form-field>
+        	<input matInput type="number" [value]="(value! * 100)" (input)="updateValue($event)">
+			<span matTextSuffix>%</span>
+		</mat-form-field>
     </div>
 </label>

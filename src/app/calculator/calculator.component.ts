@@ -6,7 +6,7 @@ declare const Desmos: any;
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
-  styleUrls: ['./calculator.component.less']
+  styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements AfterViewInit {
   @Input() critInfo!: CritInfo;

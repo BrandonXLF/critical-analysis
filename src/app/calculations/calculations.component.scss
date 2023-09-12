@@ -1,0 +1,22 @@
+::ng-deep {
+	mat-expansion-panel-header .mat-content {
+		align-items: center;
+		justify-content: center;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	math * {
+		text-align: left;
+	}
+
+	h3 {
+		margin: 1.5em 0 0.75em;
+	}
+
+	h3:first-child {
+		margin-top: 0;
+	}
+}

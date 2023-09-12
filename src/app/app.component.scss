@@ -1,8 +1,9 @@
 main {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
     flex-direction: column;
+	max-width: max-content;
+	margin: auto;
     gap: 1em;
     text-align: center;
 }

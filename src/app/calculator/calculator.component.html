@@ -1,34 +1,44 @@
 <article>
-    <div class="cells">
-        <app-cell title="Current" lineColor="#c74440">
-            <div class="row crit-row">
-                <app-input name="CRIT Rate" [value]="critInfo.rate" (valueChange)="critInfo.rate = $event" />
-                <app-input name="CRIT DMG" [value]="critInfo.dmg" (valueChange)="critInfo.dmg = $event" />
-            </div>
-            <div class="row">
-                <app-output name="Crit Value" [value]="critInfo.value!" />
-                <app-output name="Multiplier" [value]="critInfo.multiplier!" />
-                <app-ratio name="Ratio" [value]="critInfo.ratio" />
-                <app-output name="Efficiency" [value]="critInfo.efficiency!" />
-            </div>
-        </app-cell>
-        <app-cell title="Optimal" lineColor="#fa7e19">
-            <div class="row crit-row">
-                <app-output name="CRIT Rate" [value]="critInfo.bestRate!" />
-                <app-output name="CRIT DMG" [value]="critInfo.bestDmg!" />
-            </div>
-            <div class="row">
-                <app-output name="Crit Value" [value]="critInfo.value!" />
-                <app-output name="Multiplier" [value]="critInfo.bestMultiplier!" />
-                <app-ratio name="Ratio" [value]="critInfo.bestRatio" />
-                <app-output name="Efficiency" [value]="1" />
-            </div>
-        </app-cell>
-    </div>
-    <div>
-        <div class="desmos-caption">
-            CRIT Multipliers when Crit Value is {{critInfo.value! * 100 | number:'1.0-2'}}%
-        </div>
-        <div #desmos class="desmos"></div>
-    </div>
+	<mat-card>
+		<mat-card-header>
+			<h2>Current</h2>
+		</mat-card-header>
+		<mat-card-content>
+			<p class="row crit-row">
+				<app-input name="CRIT Rate" [value]="critInfo.rate" (valueChange)="critInfo.rate = $event" />
+				<app-input name="CRIT DMG" [value]="critInfo.dmg" (valueChange)="critInfo.dmg = $event" />
+			</p>
+			<p class="row">
+				<app-output name="Crit Value" [value]="critInfo.value!" />
+				<app-output name="Multiplier" [value]="critInfo.multiplier!" />
+				<app-ratio name="Ratio" [value]="critInfo.ratio" />
+				<app-output name="Efficiency" [value]="critInfo.efficiency!" />
+			</p>
+		</mat-card-content>
+	</mat-card>
+	<mat-card>
+		<mat-card-header>
+			<h2>Optimal</h2>
+		</mat-card-header>
+		<mat-card-content>
+			<p class="row crit-row">
+				<app-output name="CRIT Rate" [value]="critInfo.bestRate!" />
+				<app-output name="CRIT DMG" [value]="critInfo.bestDmg!" />
+			</p>
+			<p class="row">
+				<app-output name="Crit Value" [value]="critInfo.value!" />
+				<app-output name="Multiplier" [value]="critInfo.bestMultiplier!" />
+				<app-ratio name="Ratio" [value]="critInfo.bestRatio" />
+				<app-output name="Efficiency" [value]="1" />
+			</p>
+		</mat-card-content>
+	</mat-card>
+	<mat-card>
+		<mat-card-header>
+			CRIT Multipliers when Crit Value is {{critInfo.value! * 100 | number:'1.0-2'}}%
+		</mat-card-header>
+		<mat-card-content>
+			<div #desmos class="desmos"></div>
+		</mat-card-content>
+	</mat-card>
 </article>

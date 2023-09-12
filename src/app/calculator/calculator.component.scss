@@ -2,12 +2,7 @@ article {
     display: flex;
     gap: 2em;
     text-align: center;
-}
-
-.cells {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
+	flex-direction: column;
 }
 
 .row {
@@ -15,24 +10,23 @@ article {
     flex: 1;
     display: flex;
     gap: 1em;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .crit-row {
     font-size: 115%;
 }
 
-.desmos-caption {
-    margin-bottom: 0.5em;
+mat-card-header {
+	justify-content: center;
+
+	h2 {
+		margin: 0;
+	}
 }
 
 .desmos {
     aspect-ratio: 1 / 1;
     width: 20em;
-}
-
-@media (max-width: 850px) {
-    article {
-        flex-direction: column;
-    }
+	margin: 1em auto 0;
 }

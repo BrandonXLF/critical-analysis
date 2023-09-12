@@ -1,0 +1,58 @@
+@use '@angular/material' as mat;
+
+$main-palette: (
+	50: #e6f3ff,
+	100: #c3dfff,
+	200: #9fccff,
+	300: #7db8ff,
+	400: #69a8ff,
+	500: #5e99ff,
+	600: #5b8af0,
+	700: #5578db,
+	800: #5066c8,
+	900: #4847a7,
+	contrast: (
+		50: rgba(black, 0.87),
+		100: rgba(black, 0.87),
+		200: rgba(black, 0.87),
+		300: rgba(black, 0.87),
+		400: rgba(black, 0.87),
+		500: white,
+		600: white,
+		700: white,
+		800: white,
+		900: white
+	)
+);
+
+@include mat.core();
+
+$my-primary: mat.define-palette($main-palette, 500);
+$my-accent: mat.define-palette(mat.$teal-palette, A200, A100, A400);
+$my-theme: mat.define-dark-theme((
+	color: (
+		primary: $my-primary,
+		accent: $my-accent,
+	),
+	typography: mat.define-typography-config(),
+	density: 0
+));
+
+@include mat.form-field-theme($my-theme);
+@include mat.card-theme($my-theme);
+@include mat.expansion-theme($my-theme);
+
+:root {
+	color-scheme: dark;
+}
+
+html,
+body {
+	height: unset;
+}
+
+body {
+	background: #222;
+	color: #fff;
+	font-family: sans-serif;
+}
