@@ -7,10 +7,10 @@ article {
 
 .row {
 	text-align: left;
-	flex: 1;
 	display: flex;
 	gap: 1em;
 	justify-content: space-evenly;
+	min-width: min-content;
 }
 
 .crit-row {

@@ -57,7 +57,14 @@ body {
 	font-family: sans-serif;
 }
 
-mat-card-content,
-.mat-expansion-panel-content {
+mat-card-content {
 	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.mat-expansion-panel {
+	.mat-expansion-panel-content {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
 }
