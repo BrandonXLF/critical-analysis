@@ -38,7 +38,7 @@
 			CRIT Multipliers when CRIT Value is {{critInfo.value * 100 | number:'1.0-2'}}%
 		</mat-card-header>
 		<mat-card-content>
-			<div #desmos class="desmos"></div>
+			<app-graph class="graph" [critInfo]="critInfo" />
 		</mat-card-content>
 	</mat-card>
 </article>

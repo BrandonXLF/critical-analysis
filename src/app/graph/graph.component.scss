@@ -1,0 +1,20 @@
+path {
+	vector-effect: non-scaling-stroke;
+}
+
+.point {
+	stroke-width: 10px;
+	stroke-linecap: round;
+	fill: none;
+}
+
+.text {
+	paint-order: stroke;
+	stroke: #424242;
+	stroke-width: 2px;
+
+	&.sideways {
+		transform: rotate(180deg);
+		writing-mode: vertical-lr;
+	}
+}

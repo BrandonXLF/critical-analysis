@@ -11,6 +11,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { CalculationsComponent } from './calculations/calculations.component';
+import { GraphComponent } from './graph/graph.component';
 
 @NgModule({
 	declarations: [
@@ -20,7 +21,8 @@ import { CalculationsComponent } from './calculations/calculations.component';
 		InputComponent,
 		RatioComponent,
 		SafeHtmlPipe,
-		CalculationsComponent
+		CalculationsComponent,
+  GraphComponent
 	],
 	imports: [
 		BrowserModule,
