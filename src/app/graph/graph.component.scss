@@ -8,6 +8,10 @@ path {
 	fill: none;
 }
 
+.crisp {
+	shape-rendering: crispedges;
+}
+
 .text {
 	paint-order: stroke;
 	stroke: #424242;

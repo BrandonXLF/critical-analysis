@@ -1,12 +1,12 @@
 <svg [attr.viewBox]="viewBox" fill="white">
-	<g ngFor *ngFor="let sizePath of paths | keyvalue" [attr.stroke-width]="sizePath.key + 'px'">
-		<path
-			*ngFor="let colorPath of sizePath.value | keyvalue"
-			fill="none"
-			[attr.d]="colorPath.value"
-			[attr.stroke]="colorPath.key"
-		/>
-	</g>
+	<path
+		*ngFor="let path of paths"
+		fill="none"
+		[attr.d]="path.cmd"
+		[attr.stroke]="path.color"
+		[attr.stroke-width]="path.size + 'px'"
+		[class.crisp]="path.crisp"
+	/>
 	<path
 		*ngFor="let point of points"
 		class="point"

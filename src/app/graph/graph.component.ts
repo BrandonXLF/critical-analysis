@@ -30,8 +30,14 @@ import { CritInfo } from '../crit-info';
 	dimens: [number, number] = [0, 0];
 	scaleX = 0;
 	viewBox = '0 0 0 0';
-	paths: Record<number, Record<string, string>> = {};
 	fontSize = 12;
+
+	paths: {
+		size: number;
+		color: string;
+		cmd: string;
+		crisp?: boolean;
+	}[] = [];
 
 	texts: {
 		x: number;
@@ -49,20 +55,6 @@ import { CritInfo } from '../crit-info';
 		y: number;
 		color?: string;
 	}[] = [];
-
-	drawPath(size: number, color: string, cmd: string) {
-		if (!this.paths[size])
-			this.paths[size] = {};
-
-		if (!this.paths[size][color])
-			this.paths[size][color] = '';
-
-		this.paths[size][color] += cmd;
-	}
-
-	drawLine(cmd: string) {
-		return this.drawPath(3, GraphComponent.GRAPH_COLOR, cmd);
-	}
 
 	drawAxis(
 		dir: number,
@@ -118,16 +110,16 @@ import { CritInfo } from '../crit-info';
 				: `M ${this.startPoint[0] * this.scaleX} ${-value} h ${this.dimens[0] * this.scaleX}`;
 
 			if (adjustedValue === 0) {
-				this.drawPath(3, color, cmd);
+				this.paths.push({size: 3, color, crisp: true, cmd});
 				continue;
 			}
 
 			if (secondaryOrAxis) {
-				this.drawPath(1, color, cmd);
+				this.paths.push({size: 1, color, crisp: true, cmd});
 				continue;
 			}
 
-			this.drawPath(1, color + '55', cmd);
+			this.paths.push({size: 1, color: color + '55', crisp: true, cmd});
 		}
 	}
 
@@ -155,8 +147,10 @@ import { CritInfo } from '../crit-info';
 	}
 
 	drawLines() {
+		let cmd = '';
+
 		// Start line
-		this.drawLine(`M ${this.startPoint[0] * this.scaleX} -100 H 0`);
+		cmd += `M ${this.startPoint[0] * this.scaleX} -100 H 0`;
 
 		// Parabola
 		if (this.critInfo.value > 0) {
@@ -167,15 +161,17 @@ import { CritInfo } from '../crit-info';
 			const controlPointX = curveEndX / 2;
 			const controlPointY = (curveEndX / 4) * -this.critInfo.value - 100;
 
-			this.drawLine(`Q ${controlPointX * this.scaleX} ${controlPointY} ${curveEndX * this.scaleX} ${curveEndY}`);
+			cmd += `Q ${controlPointX * this.scaleX} ${controlPointY} ${curveEndX * this.scaleX} ${curveEndY}`;
 		}
 
 		// CRIT rate > 100
 		if (this.critInfo.value > 2)
-			this.drawLine(`L ${this.critInfo.value * 100 * this.scaleX} -100`);
+			cmd += `L ${this.critInfo.value * 100 * this.scaleX} -100`;
 
 		// End line
-		this.drawLine(`H ${(this.startPoint[0] + this.dimens[0]) * this.scaleX}`);
+		cmd += `H ${(this.startPoint[0] + this.dimens[0]) * this.scaleX}`;
+
+		this.paths.push({size: 3, color: GraphComponent.GRAPH_COLOR, cmd});
 	}
 
 	update() {
@@ -195,7 +191,7 @@ import { CritInfo } from '../crit-info';
 		this.fontSize = this.dimens[1] / 22;
 		this.viewBox = `${this.startPoint[0] * this.scaleX - this.fontSize * 3.65} ${this.startPoint[1] - this.fontSize * 2.8} ${this.dimens[0] * this.scaleX + this.fontSize * 7.3} ${this.dimens[1] + this.fontSize * 5.6}`;
 
-		this.paths = {};
+		this.paths = [];
 		this.points = [];
 		this.texts = [];
 
