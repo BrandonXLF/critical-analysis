@@ -229,7 +229,7 @@ import { CritInfo } from '../crit-info';
 		this.drawAxis(
 			GraphComponent.VERTICAL,
 			false,
-			0,
+			this.critInfo.bestMultiplier * -10,
 			this.critInfo.bestMultiplier * 120,
 			GraphComponent.CRIT_MULT_COLOR,
 			'CRIT Multiplier (%)',
