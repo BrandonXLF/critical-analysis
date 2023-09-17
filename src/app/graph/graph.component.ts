@@ -17,16 +17,20 @@ import { CritInfo } from '../crit-info';
 	static HORIZONTAL = 0;
 	static VERTICAL = 1;
 
+	static GRAPH_COLOR = '#5E9AFF';
+	static CRIT_DMG_COLOR = '#96AD00';
+	static CRIT_RATE_COLOR = '#F2BEFC';
+	static CRIT_MULT_COLOR = '#FFFFFF';
+	static CURRENT_COLOR = '#F63C61';
+	static OPTIMAL_COLOR = '#FFA552';
+
 	@Input() critInfo!: CritInfo;
 
 	startPoint: [number, number] = [0, 0];
 	dimens: [number, number] = [0, 0];
 	scaleX = 0;
 	viewBox = '0 0 0 0';
-	axisPath = '';
-	secondaryPath = '';
-	minorPath = '';
-	chartPath = '';
+	paths: Record<number, Record<string, string>> = {};
 	fontSize = 12;
 
 	texts: {
@@ -46,11 +50,26 @@ import { CritInfo } from '../crit-info';
 		color?: string;
 	}[] = [];
 
+	drawPath(size: number, color: string, cmd: string) {
+		if (!this.paths[size])
+			this.paths[size] = {};
+
+		if (!this.paths[size][color])
+			this.paths[size][color] = '';
+
+		this.paths[size][color] += cmd;
+	}
+
+	drawLine(cmd: string) {
+		return this.drawPath(3, GraphComponent.GRAPH_COLOR, cmd);
+	}
+
 	drawAxis(
 		dir: number,
 		inverse: boolean,
 		start: number,
 		end: number,
+		color: string,
 		label: string,
 		labelOffset: number,
 		otherDimens: [number, string][],
@@ -99,16 +118,16 @@ import { CritInfo } from '../crit-info';
 				: `M ${this.startPoint[0] * this.scaleX} ${-value} h ${this.dimens[0] * this.scaleX}`;
 
 			if (adjustedValue === 0) {
-				this.axisPath += cmd;
+				this.drawPath(3, color, cmd);
 				continue;
 			}
 
 			if (secondaryOrAxis) {
-				this.secondaryPath += cmd;
+				this.drawPath(1, color, cmd);
 				continue;
 			}
 
-			this.minorPath += cmd;
+			this.drawPath(1, color + '55', cmd);
 		}
 	}
 
@@ -137,7 +156,7 @@ import { CritInfo } from '../crit-info';
 
 	drawLines() {
 		// Start line
-		this.chartPath = `M ${this.startPoint[0] * this.scaleX} -100 H 0`;
+		this.drawLine(`M ${this.startPoint[0] * this.scaleX} -100 H 0`);
 
 		// Parabola
 		if (this.critInfo.value > 0) {
@@ -148,15 +167,15 @@ import { CritInfo } from '../crit-info';
 			const controlPointX = curveEndX / 2;
 			const controlPointY = (curveEndX / 4) * -this.critInfo.value - 100;
 
-			this.chartPath += `Q ${controlPointX * this.scaleX} ${controlPointY} ${curveEndX * this.scaleX} ${curveEndY}`;
+			this.drawLine(`Q ${controlPointX * this.scaleX} ${controlPointY} ${curveEndX * this.scaleX} ${curveEndY}`);
 		}
 
 		// CRIT rate > 100
 		if (this.critInfo.value > 2)
-			this.chartPath += `L ${this.critInfo.value * 100 * this.scaleX} -100`;
+			this.drawLine(`L ${this.critInfo.value * 100 * this.scaleX} -100`);
 
 		// End line
-		this.chartPath += `H ${(this.startPoint[0] + this.dimens[0]) * this.scaleX}`;
+		this.drawLine(`H ${(this.startPoint[0] + this.dimens[0]) * this.scaleX}`);
 	}
 
 	update() {
@@ -176,9 +195,7 @@ import { CritInfo } from '../crit-info';
 		this.fontSize = this.dimens[1] / 22;
 		this.viewBox = `${this.startPoint[0] * this.scaleX - this.fontSize * 3.65} ${this.startPoint[1] - this.fontSize * 2.8} ${this.dimens[0] * this.scaleX + this.fontSize * 7.3} ${this.dimens[1] + this.fontSize * 5.6}`;
 
-		this.axisPath = '';
-		this.secondaryPath = '';
-		this.minorPath = '';
+		this.paths = {};
 		this.points = [];
 		this.texts = [];
 
@@ -190,6 +207,7 @@ import { CritInfo } from '../crit-info';
 			false,
 			lowestValue,
 			highestValue,
+			GraphComponent.CRIT_RATE_COLOR,
 			'CRIT Rate (%)',
 			this.fontSize * 1.5,
 			[
@@ -204,6 +222,7 @@ import { CritInfo } from '../crit-info';
 			true,
 			highestValue,
 			lowestValue,
+			GraphComponent.CRIT_DMG_COLOR,
 			'CRIT DMG (%)',
 			-this.fontSize * 0.7,
 			[
@@ -216,6 +235,7 @@ import { CritInfo } from '../crit-info';
 			false,
 			0,
 			this.critInfo.bestMultiplier * 120,
+			GraphComponent.CRIT_MULT_COLOR,
 			'CRIT Multiplier (%)',
 			-this.fontSize * 2.55,
 			[
@@ -230,7 +250,7 @@ import { CritInfo } from '../crit-info';
 			this.critInfo.rate * 200 * this.scaleX,
 			-this.critInfo.multiplier * 100,
 			isOptimal ? 'Current (Optimal)' : 'Current',
-			'#F52F57',
+			GraphComponent.CURRENT_COLOR,
 			this.fontSize / 2 * (this.critInfo.rate <= this.critInfo.bestRate ? 1 : -1),
 			this.fontSize / 2,
 			(this.critInfo.rate <= this.critInfo.bestRate) ? 'start' : 'end',
@@ -242,7 +262,7 @@ import { CritInfo } from '../crit-info';
 				this.critInfo.bestRate * 200 * this.scaleX,
 				-this.critInfo.bestMultiplier * 100,
 				'Optimal',
-				'#FFA552',
+				GraphComponent.OPTIMAL_COLOR,
 				this.fontSize / 2,
 				-this.fontSize / 2
 			);

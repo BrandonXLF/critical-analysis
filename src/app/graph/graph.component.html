@@ -1,8 +1,12 @@
 <svg [attr.viewBox]="viewBox" fill="white">
-	<path [attr.d]="axisPath" stroke="white" stroke-width="3px" fill="none" />
-	<path [attr.d]="secondaryPath" stroke="#fff" stroke-width="1px" fill="none" />
-	<path [attr.d]="minorPath" stroke="#ffffff22" stroke-width="1px" fill="none" />
-	<path [attr.d]="chartPath" stroke="#5e9aff" stroke-width="3px" fill="none" />
+	<g ngFor *ngFor="let sizePath of paths | keyvalue" [attr.stroke-width]="sizePath.key + 'px'">
+		<path
+			*ngFor="let colorPath of sizePath.value | keyvalue"
+			fill="none"
+			[attr.d]="colorPath.value"
+			[attr.stroke]="colorPath.key"
+		/>
+	</g>
 	<path
 		*ngFor="let point of points"
 		class="point"
