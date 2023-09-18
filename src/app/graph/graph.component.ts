@@ -18,7 +18,7 @@ import { CritInfo } from '../crit-info';
 	static VERTICAL = 1;
 
 	static GRAPH_COLOR = '#5E9AFF';
-	static CRIT_DMG_COLOR = '#96AD00';
+	static CRIT_DMG_COLOR = '#B1CC00';
 	static CRIT_RATE_COLOR = '#F2BEFC';
 	static CRIT_MULT_COLOR = '#FFFFFF';
 	static CURRENT_COLOR = '#F63C61';
@@ -102,7 +102,8 @@ import { CritInfo } from '../crit-info';
 					x: hoz ? (value * this.scaleX) : otherDimen,
 					y: hoz ? otherDimen : -value,
 					anchor: hoz ? 'middle' : otherPos,
-					baseline: hoz ? otherPos : 'middle'
+					baseline: hoz ? otherPos : 'middle',
+					color
 				}));
 
 			const cmd = hoz
