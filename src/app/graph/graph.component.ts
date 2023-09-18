@@ -110,7 +110,7 @@ import { CritInfo } from '../crit-info';
 				: `M ${this.startPoint[0] * this.scaleX} ${-value} h ${this.dimens[0] * this.scaleX}`;
 
 			if (adjustedValue === 0) {
-				this.paths.push({size: 3, color, crisp: true, cmd});
+				this.paths.push({size: 2, color, crisp: true, cmd});
 				continue;
 			}
 
