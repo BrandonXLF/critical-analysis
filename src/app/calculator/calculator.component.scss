@@ -1,6 +1,8 @@
+@use '../../styles/variables' as *;
+
 article {
 	display: flex;
-	gap: 2em;
+	gap: $hoz-gap;
 	text-align: center;
 	flex-direction: column;
 }

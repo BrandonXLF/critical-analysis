@@ -1,3 +1,5 @@
+@use '../styles/variables' as *;
+
 header {
 	text-align: center;
 }
@@ -8,5 +10,5 @@ main {
 	max-width: max-content;
 	min-width: min(350px, 100%);
 	margin: auto;
-	gap: 1em;
+	gap: $hoz-gap;
 }
