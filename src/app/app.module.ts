@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { CalculationsComponent } from './calculations/calculations.component';
 import { GraphComponent } from './graph/graph.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
 	declarations: [
@@ -22,7 +23,8 @@ import { GraphComponent } from './graph/graph.component';
 		RatioComponent,
 		SafeHtmlPipe,
 		CalculationsComponent,
-  GraphComponent
+  GraphComponent,
+  FooterComponent
 	],
 	imports: [
 		BrowserModule,
