@@ -2,7 +2,7 @@
 
 > Genshin Impact and Honkai: Star Rail CRIT rate and damage efficiency analyzer.
 
-Critical Analysis is a calculator for visualizing and optimizing the efficiency of a character's CRIT Rate and CRIT Damage in Genshin Impact.
+Critical Analysis is a calculator for visualizing and optimizing the efficiency of a character's CRIT Rate and CRIT Damage in Genshin Impact or Honkai: Star Rail.
 
 ## Development server
 
