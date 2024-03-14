@@ -23,9 +23,6 @@
 						"outputPath": "dist/critical-analysis",
 						"index": "src/index.html",
 						"main": "src/main.ts",
-						"polyfills": [
-							"zone.js"
-						],
 						"tsConfig": "tsconfig.app.json",
 						"inlineStyleLanguage": "sass",
 						"assets": [
@@ -67,10 +64,10 @@
 					"builder": "@angular-builders/custom-webpack:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "critical-analysis:build:production"
+							"buildTarget": "critical-analysis:build:production"
 						},
 						"development": {
-							"browserTarget": "critical-analysis:build:development"
+							"buildTarget": "critical-analysis:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
@@ -78,16 +75,12 @@
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"browserTarget": "critical-analysis:build"
+						"buildTarget": "critical-analysis:build"
 					}
 				},
 				"test": {
 					"builder": "@angular-devkit/build-angular:karma",
 					"options": {
-						"polyfills": [
-							"zone.js",
-							"zone.js/testing"
-						],
 						"tsConfig": "tsconfig.spec.json",
 						"inlineStyleLanguage": "sass",
 						"assets": [
