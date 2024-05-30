@@ -23,8 +23,8 @@ import { FooterComponent } from './footer/footer.component';
 		RatioComponent,
 		SafeHtmlPipe,
 		CalculationsComponent,
-  GraphComponent,
-  FooterComponent
+		GraphComponent,
+		FooterComponent
 	],
 	imports: [
 		BrowserModule,
