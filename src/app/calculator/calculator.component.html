@@ -4,16 +4,15 @@
 			<h2>Current</h2>
 		</mat-card-header>
 		<mat-card-content>
-			<p class="row crit-row">
+			<app-io-row class="crit-row">
 				<app-input name="CRIT Rate" [value]="critInfo.rate" (valueChange)="critInfo.rate = $event" />
 				<app-input name="CRIT DMG" [value]="critInfo.dmg" [min]="0" (valueChange)="critInfo.dmg = $event" />
-			</p>
-			<p class="row">
-				<app-percentage name="CRIT Value" [value]="critInfo.value" />
-				<app-ratio name="Ratio" [value]="critInfo.ratio" />
-				<app-percentage name="Multiplier" [value]="critInfo.multiplier" />
-				<app-percentage name="Efficiency" [value]="critInfo.efficiency" />
-			</p>
+			</app-io-row>
+			<app-calculation-row
+				[value]="critInfo.value"
+				[ratio]="critInfo.ratio"
+				[multiplier]="critInfo.multiplier"
+				[efficiency]="critInfo.efficiency" />
 		</mat-card-content>
 	</mat-card>
 	<mat-card>
@@ -21,16 +20,15 @@
 			<h2>Optimal</h2>
 		</mat-card-header>
 		<mat-card-content>
-			<p class="row crit-row">
-				<app-percentage name="CRIT Rate" [value]="critInfo.bestRate" />
-				<app-percentage name="CRIT DMG" [value]="critInfo.bestDmg" />
-			</p>
-			<p class="row">
-				<app-percentage name="CRIT Value" [value]="critInfo.value" />
-				<app-ratio name="Ratio" [value]="critInfo.bestRatio" />
-				<app-percentage name="Multiplier" [value]="critInfo.bestMultiplier" />
-				<app-percentage name="Efficiency" [value]="1" />
-			</p>
+			<app-io-row class="crit-row">
+				<app-output name="CRIT Rate">{{critInfo.bestRate | percentage}}</app-output>
+				<app-output name="CRIT DMG">{{critInfo.bestDmg | percentage}}</app-output>
+			</app-io-row>
+			<app-calculation-row
+				[value]="critInfo.value"
+				[ratio]="critInfo.bestRatio"
+				[multiplier]="critInfo.bestMultiplier"
+				[efficiency]="1" />
 		</mat-card-content>
 	</mat-card>
 	<mat-card>

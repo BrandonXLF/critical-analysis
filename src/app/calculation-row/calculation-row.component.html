@@ -1,0 +1,14 @@
+<app-io-row>
+	<app-output name="CRIT Value" tooltip="Value of the CRIT rate and DMG in terms of artifact rolls. Calculated as 2 &times; CRIT Rate + CRIT DMG.">
+		{{value | percentage}}
+	</app-output>
+	<app-output name="Ratio" tooltip="The ratio of CRIT rate to DMG.">
+		{{ratio | ratio}}
+	</app-output>
+	<app-output name="Multiplier" tooltip="The effective multiplier the CRIT rate and DMG apply to your damage by.">
+		{{multiplier | percentage}}
+	</app-output>
+	<app-output name="Efficiency" tooltip="The efficiency of the CRIT rate to DMG ratio in terms of the multiplier.">
+		{{efficiency | percentage}}
+	</app-output>
+</app-io-row>

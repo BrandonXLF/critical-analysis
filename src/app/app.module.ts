@@ -15,6 +15,8 @@ import { GraphComponent } from './graph/graph.component';
 import { FooterComponent } from './footer/footer.component';
 import { OutputComponent } from './output/output.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { IORowComponent } from './io-row/io-row.component';
+import { CalculationRowComponent } from './calculation-row/calculation-row.component';
 import { PercentagePipe } from './percentage.pipe';
 import { RatioPipe } from './ratio.pipe';
 
@@ -30,6 +32,8 @@ import { RatioPipe } from './ratio.pipe';
 		GraphComponent,
 		FooterComponent,
 		OutputComponent,
+		IORowComponent,
+		CalculationRowComponent,
 		PercentagePipe,
 		RatioPipe
 	],
