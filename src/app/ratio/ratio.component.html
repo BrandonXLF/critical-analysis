@@ -1,6 +1,3 @@
-<div>
-	<div>{{name}}</div>
-	<div>
-		<output>1:{{value! | number:'1.0-2'}}</output>
-	</div>
-</div>
+<app-output [name]="name">
+	1:{{value! | number:'1.0-2'}}
+</app-output>

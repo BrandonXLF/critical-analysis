@@ -2,8 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
 	selector: 'app-percentage',
-	templateUrl: './percentage.component.html',
-	styleUrls: ['./percentage.component.scss']
+	templateUrl: './percentage.component.html'
 })
 export class PercentageComponent {
 	@Input() name?: string;

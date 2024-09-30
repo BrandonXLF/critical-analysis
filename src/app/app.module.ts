@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CalculationsComponent } from './calculations/calculations.component';
 import { GraphComponent } from './graph/graph.component';
 import { FooterComponent } from './footer/footer.component';
+import { OutputComponent } from './output/output.component';
 
 @NgModule({
 	declarations: [
@@ -24,7 +25,8 @@ import { FooterComponent } from './footer/footer.component';
 		SafeHtmlPipe,
 		CalculationsComponent,
 		GraphComponent,
-		FooterComponent
+		FooterComponent,
+		OutputComponent
 	],
 	imports: [
 		BrowserModule,
