@@ -14,6 +14,7 @@ import { CalculationsComponent } from './calculations/calculations.component';
 import { GraphComponent } from './graph/graph.component';
 import { FooterComponent } from './footer/footer.component';
 import { OutputComponent } from './output/output.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
 	declarations: [
@@ -33,7 +34,8 @@ import { OutputComponent } from './output/output.component';
 		BrowserAnimationsModule,
 		MatExpansionModule,
 		MatCardModule,
-		MatInputModule
+		MatInputModule,
+		MatTooltipModule
 	],
 	bootstrap: [AppComponent]
 })

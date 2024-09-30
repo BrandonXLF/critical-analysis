@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class OutputComponent {
 	@Input() name?: string;
-	@Input() value?: number;
+	@Input() tooltip: string = '';
 }
 

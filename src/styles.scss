@@ -41,6 +41,7 @@ $my-theme: mat.define-dark-theme((
 @include mat.form-field-theme($my-theme);
 @include mat.card-theme($my-theme);
 @include mat.expansion-theme($my-theme);
+@include mat.tooltip-theme($my-theme);
 
 :root {
 	color-scheme: dark;

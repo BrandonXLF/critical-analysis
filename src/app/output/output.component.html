@@ -1,5 +1,7 @@
 <label>
-	<div class="label-text">{{name}}</div>
+	<div class="label-text">
+		<span [matTooltip]="tooltip">{{name}}</span>
+	</div>
 	<div>
 		<output>
 			<ng-content></ng-content>
