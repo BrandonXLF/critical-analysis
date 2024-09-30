@@ -2,8 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
 	selector: 'app-calculation-row',
-	templateUrl: './calculation-row.component.html',
-	styleUrl: './calculation-row.component.scss'
+	templateUrl: './calculation-row.component.html'
 })
 export class CalculationRowComponent {
 	@Input() value!: number;
