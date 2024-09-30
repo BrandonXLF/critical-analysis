@@ -15,6 +15,8 @@ import { GraphComponent } from './graph/graph.component';
 import { FooterComponent } from './footer/footer.component';
 import { OutputComponent } from './output/output.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { PercentagePipe } from './percentage.pipe';
+import { RatioPipe } from './ratio.pipe';
 
 @NgModule({
 	declarations: [
@@ -27,7 +29,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 		CalculationsComponent,
 		GraphComponent,
 		FooterComponent,
-		OutputComponent
+		OutputComponent,
+		PercentagePipe,
+		RatioPipe
 	],
 	imports: [
 		BrowserModule,
