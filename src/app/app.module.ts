@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { CalculationsComponent } from './calculations/calculations.component';
+import { EquationsComponent } from './equations/equations.component';
 import { GraphComponent } from './graph/graph.component';
 import { FooterComponent } from './footer/footer.component';
 import { OutputComponent } from './output/output.component';
@@ -24,7 +24,7 @@ import { RatioPipe } from './ratio.pipe';
 		CalculatorComponent,
 		InputComponent,
 		SafeHtmlPipe,
-		CalculationsComponent,
+		EquationsComponent,
 		GraphComponent,
 		FooterComponent,
 		OutputComponent,
