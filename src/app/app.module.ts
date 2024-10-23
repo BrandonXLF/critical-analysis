@@ -9,7 +9,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { EquationsComponent } from './equations/equations.component';
-import { GraphComponent } from './graph/graph.component';
+import { EfficiencyGraphComponent } from './efficiency-graph/efficiency-graph.component';
 import { FooterComponent } from './footer/footer.component';
 import { OutputComponent } from './output/output.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -17,6 +17,7 @@ import { IORowComponent } from './io-row/io-row.component';
 import { CalculationRowComponent } from './calculation-row/calculation-row.component';
 import { PercentagePipe } from './percentage.pipe';
 import { RatioPipe } from './ratio.pipe';
+import { BaseGraphComponent } from './base-graph/base-graph.component';
 
 @NgModule({
 	declarations: [
@@ -25,13 +26,14 @@ import { RatioPipe } from './ratio.pipe';
 		InputComponent,
 		SafeHtmlPipe,
 		EquationsComponent,
-		GraphComponent,
+		EfficiencyGraphComponent,
 		FooterComponent,
 		OutputComponent,
 		IORowComponent,
 		CalculationRowComponent,
 		PercentagePipe,
-		RatioPipe
+		RatioPipe,
+		BaseGraphComponent
 	],
 	imports: [
 		BrowserModule,
